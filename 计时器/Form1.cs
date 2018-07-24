@@ -21,23 +21,10 @@ namespace 计时器
         {
             isPause = false;
             CheckForIllegalCrossThreadCalls = false;
+
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
         private void button1_Click(object sender, EventArgs e)
         {
             if (timer != null)
@@ -59,14 +46,14 @@ namespace 计时器
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         public void timerAction(object source, ElapsedEventArgs e)
-        {
+        {       
             sec--;
             label3.Text=printTime(sec);
+            if (sec == 0)
+            {
+                timer.Stop();
+            }
         }
         public static String printTime(int sec)
         {
@@ -113,9 +100,7 @@ namespace 计时器
                     timer.Enabled = true;
                     pauseButton.Text = "暂停";
                 }
-            }
-            
-                
+            }    
         }
     }
 }
